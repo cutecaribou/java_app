@@ -1,7 +1,7 @@
 import java.util.HashMap;
 
 public class ConnectorRepo {
-    private HashMap<Integer, DBConnector> connectorMap;
+    private HashMap<Integer, DBExecutableConnector> connectorMap;
     private int id;
 
     ConnectorRepo() {
@@ -10,13 +10,13 @@ public class ConnectorRepo {
     }
 
     public int createConnector(DBConfig config) {
-        DBConnector curConnector = new DBConnector(config);
+        DBExecutableConnector curConnector = new DBExecutableConnector(config);
         ++id;
         connectorMap.put(id, curConnector);
         return id;
     }
 
-    public DBConnector getConnector(int id) {
+    public DBExecutableConnector getConnector(int id) {
         return connectorMap.get(id);
     }
 }

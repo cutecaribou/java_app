@@ -8,11 +8,9 @@ public class ConnectorManager {
     }
 
     public ResultSet executeSelect(int conId, String query) throws SQLException {
-        DBConnector connector = repo.getConnector(conId);
-        Connection curConnection = connector.getConnection();
+        DBExecutableConnector connector = repo.getConnector(conId);
 
-        Statement statement = curConnection.createStatement();
-        return statement.executeQuery(query);
+        return connector.executeSelect(query);
     }
 
     public int createConnector(DBConfig config) {
